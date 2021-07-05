@@ -180,7 +180,7 @@ namespace ReactIb
         {
             return new ListFetcher<TickData, TickData>(this, _ibClient.RealtimeTaq,
                         _ibClient.RealtimeTaq.Throttle(TimeSpan.FromMilliseconds(TaqSnapshotDoneQuietIntervalMs)), e => e.RequestId,
-                            e => e.RequestId).RunAsync(r => _ibClient.ClientSocket.reqMktData(r, contract, null, true, null), scheduler);
+                            e => e.RequestId).RunAsync(r => _ibClient.ClientSocket.reqMktData(r, contract, null,true, true, null), scheduler);
         }
 
         public async Task SubscribeAccountUpdatesAsync(string account = null)
@@ -198,7 +198,7 @@ namespace ReactIb
                             () =>
                                 {
                                     _log.Debug($"Subscribing to realtime TAQ data for contract id {contract.ConId} with request id {requestId}");
-                                    _ibClient.ClientSocket.reqMktData(requestId, contract, null, false, null);
+                                    _ibClient.ClientSocket.reqMktData(requestId, contract, null,false, false, null);
                                 },
                             async () =>
                                 {
@@ -254,7 +254,7 @@ namespace ReactIb
 
             return requester.RunAsync(r => _ibClient.ClientSocket.reqHistoricalData(r, contract,
                                         endDateTime.ToUniversalTime().ToString("yyyyMMdd HH:mm:ss", CultureInfo.InvariantCulture) + " GMT",
-                                        GetDurationString(duration), GetEnumDescription(barSize), GetEnumDescription(barType), 0, 2, null), scheduler);
+                                        GetDurationString(duration), GetEnumDescription(barSize), GetEnumDescription(barType), 0, 2,false, null), scheduler);
         }
 
         public void Dispose()

@@ -31,9 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CSharpAPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\CSharpAPI.dll</HintPath>
+    <Reference Include="IB.CSharpApi, Version=9.73.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\IB.CSharpApi.9.73.7\lib\net45\IB.CSharpApi.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
